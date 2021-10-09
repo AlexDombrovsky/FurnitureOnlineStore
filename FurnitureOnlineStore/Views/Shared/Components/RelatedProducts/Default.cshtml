@@ -1,0 +1,30 @@
+﻿@model List<FurnitureOnlineStore.Models.Products.ProductViewModel>
+<section class="py-5">
+    <div class="container">
+        <div class="row text-left p-2 pb-3">
+            <h4>Produse asemanatoare</h4>
+        </div>
+
+        <div id="carousel-related-product">
+            @foreach (var item in Model)
+            {
+                <div class="p-2 pb-3">
+                    <div class="product-wap card rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="@item.Photos.FirstOrDefault().Path">
+                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                <ul class="list-unstyled">
+                                    <li><a class="btn btn-success text-white mt-2" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><i class="far fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="h3 text-decoration-none">@item.Name</a>
+                            <p class="text-center mb-0">$@item.Price</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
